@@ -1,0 +1,12 @@
+
+alpha_vantage
+google-cloud-storage
+google-api-core
+google-auth
+gcsfs
+pyspark
+pandas-datareader
+pandas
+google
+google-cloud
+python-dotenv
