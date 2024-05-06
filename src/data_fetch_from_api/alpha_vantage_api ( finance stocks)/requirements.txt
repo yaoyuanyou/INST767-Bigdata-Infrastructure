@@ -1,9 +1,0 @@
-alpha_vantage
-google-cloud-storage
-google-auth
-gcsfs
-fsspec
-pyspark
-pandas
-google-cloud
-datetime
