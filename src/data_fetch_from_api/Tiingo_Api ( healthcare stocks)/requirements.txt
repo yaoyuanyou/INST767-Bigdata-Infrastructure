@@ -1,0 +1,8 @@
+tiingo
+google-cloud-storage
+google-auth
+pyspark
+pandas
+google-cloud
+datetime
+
