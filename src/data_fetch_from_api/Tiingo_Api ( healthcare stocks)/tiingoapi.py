@@ -29,14 +29,13 @@ def hello_world(request):
   # To reuse the same HTTP Session across API calls (and have better performance), include a session key.
   config={}
   config['session'] = True
-  config['api_key'] = 'api_key'
+  config['api_key'] = 'yourkey'
 
   # Initialize
   client = TiingoClient(config)
-  
-  # Pharma companies stock
+
   ticker=['LLY','MRK','ABT','ABBV']
-  today=pd.to_datetime('today')
+  today=pd.to_datetime('today').date()
 
   # final dataframe
   final=pd.DataFrame()
@@ -44,15 +43,11 @@ def hello_world(request):
   for tck in ticker:
     data = client.get_ticker_price(tck,fmt='json',startDate='2024-04-01',endDate=today,frequency='daily')
     df=pd.DataFrame(data)
-    df=df[['date','close','low','open','volume']]
-    df=df.rename(columns={'date': 'Date', 'open': 'Open', 'high': 'High', 'low': 'Low', 'close': 'Close', 'volume':'Volume'})
-    df['Date']=pd.to_datetime(df['Date'])
     df['ticker']=tck
-    final=pd.concat([final,df])
-  
-  if present==0:
-    latest = (pd.to_datetime('today') - pd.Timedelta(days=1)).normalize()
-    final=final[final['Date']==latest]
+    if present==1:
+      final=pd.concat([final,df])
+    else:
+      final=pd.concat([final,df.iloc[[-1]]])
 
   
   # set the filename
@@ -66,3 +61,7 @@ def hello_world(request):
   blob.upload_from_string(data)
 
   return 'data uploaded!'
+
+
+
+   

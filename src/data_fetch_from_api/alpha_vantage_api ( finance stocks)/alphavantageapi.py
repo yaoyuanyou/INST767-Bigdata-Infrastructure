@@ -32,11 +32,11 @@ def hello_world(request):
 
     # fetch data
 
-    key="api_key"
+    key="yourkey"
 
 
     # creating datatframe
-    ticker=['JPM','BAC','HSBC','WFC'] #finance data
+    ticker=['JPM','BAC','HSBC','WFC']
     bucket_name = 'alphavantagestorage'
     final = pd.DataFrame()
     for tck in ticker:
@@ -45,16 +45,16 @@ def hello_world(request):
         df=pd.DataFrame(response['Time Series (Daily)'])
         df=df.T
         df=df.reset_index()
-        df=df.rename(columns={'index': 'Date', '1. open': 'Open', '2. high': 'High', '3. low': 'Low', '4. close': 'Close', '5. volume':'Volume'})
         df['ticker']=tck
-        final= pd.concat([final,df])
-    
-    if present==0:
-        latest = (pd.to_datetime('today')).normalize()
-        final=final[final['Date']==latest]
+
+        if present==0:
+            final= pd.concat([final,df.head(1)])
+        else:
+            final= pd.concat([final,df])
+           
 
     # set the filename
-    today=pd.to_datetime('today')
+    today=pd.to_datetime('today').date()
     filename = 'stock_data'+str(today)+'.json'
     
 
