@@ -10,11 +10,11 @@ import pandas as pd
 
 # Create a Spark session
 spark = SparkSession.builder \
-                    .appName('y_finance_api') \
+                    .appName('polygon_api') \
                     .getOrCreate()
 
 # Intialize below
-bucket = "yahoofinancestorage"
+bucket = "polygonapistorage"
 project_id = "adroit-archive-422123-h0"
 dataset_id = "stockdata"
 table_id='Tech'
@@ -22,7 +22,7 @@ table_id='Tech'
 # json file name
 today=pd.to_datetime('today').date()
 file_name='stock_data'+str(today)+'.json'
-file=f'gs://yahoofinancestorage/{file_name}'
+file=f'gs://{bucket}/{file_name}'
 
 # Read the JSON file into a DataFrame
 df = spark.read.json(file)
@@ -35,10 +35,21 @@ df.show()
 
 
 # transform the dataset
-df=df.withColumn('Date', F.to_utc_timestamp(F.from_unixtime(F.col("Date")/1000,'yyyy-MM-dd'),'EST')) # changing the format of date
-df=df.withColumn('Date', to_date(col('Date')))
 
-df_new = df.withColumn('average', (col('Close') + col('High')) / 2.0) # add a column doing average 
+df=df[['h','l','o','c','v','t','ticker']] # limiting the data
+
+new=[ "High",'Low',"Open",'Close','Volume','Date'] # changing names
+for c,n in zip(df.columns,new):
+    print(c)
+    print(n)
+    df=df.withColumnRenamed(c,n)
+    
+df_new=df.withColumn('Date', F.to_utc_timestamp(F.from_unixtime(F.col("Date")/1000,'yyyy-MM-dd'),'EST')) # changing the format of date
+df_new=df_new.withColumn('Date', to_date(col('Date')))
+
+df_new = df_new.withColumn('Volume', df_new["Volume"].cast("bigint"))
+
+df_new = df_new.withColumn('average', (col('Close') + col('High')) / 2.0) # add a column doing average 
 df_clean = df_new.withColumn('average', col('average').cast(DoubleType()))
 df_clean.show()
 

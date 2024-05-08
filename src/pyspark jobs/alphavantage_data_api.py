@@ -3,6 +3,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 from google.cloud import bigquery
 from pyspark.sql.types import *
+import pyspark.sql.functions as F
 from google.cloud.exceptions import NotFound
 import pandas as pd
 
@@ -30,6 +31,20 @@ df = spark.read.json(file)
 print("Schema of the DataFrame:")
 df.printSchema()
 
+# Data Cleaning and Transformation
+
+# changing column names
+new=["Open", "High",'Low','Close','Volume','Date']
+for c,n in zip(df.columns,new):
+    df=df.withColumnRenamed(c,n)
+
+# changing data types
+df = df.withColumn("Open", df["Open"].cast("float"))
+df = df.withColumn( "High", df["High"].cast("float"))
+df = df.withColumn('Low', df["Low"].cast("float"))
+df = df.withColumn('Close', df["Close"].cast("float"))
+df = df.withColumn('Volume', df["Volume"].cast("int"))
+df = df.withColumn('Date',F.to_date(df["Date"], "yyyy-MM-dd"))
 
 # add a column doing average 
 df_new = df.withColumn('average', (col('Close') + col('High')) / 2.0)

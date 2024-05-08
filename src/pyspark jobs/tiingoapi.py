@@ -35,7 +35,18 @@ df.show()
 
 
 # transform the dataset
-df=df.withColumn('Date', F.to_utc_timestamp(F.from_unixtime(F.col("Date")/1000,'yyyy-MM-dd'),'EST')) # changing the format of date
+
+df=df[['high','low','open','close','volume','date','ticker']] # considering only these columns
+
+#Rename
+new=[ "High",'Low',"Open",'Close','Volume','Date']
+for c,n in zip(df.columns,new):
+    print(c)
+    print(n)
+    df=df.withColumnRenamed(c,n)
+
+
+#df=df.withColumn('Date', F.to_utc_timestamp(F.from_unixtime(F.col("Date")/1000,'yyyy-MM-dd'),'EST')) # changing the format of date
 df=df.withColumn('Date', to_date(col('Date')))
 
 df_new = df.withColumn('average', (col('Close') + col('High')) / 2.0) # add a column doing average 
