@@ -17,3 +17,13 @@ This project fetches the latest data for 4 tech companies, and 4 pharmaceutical 
 
 
 
+## Ingestion
+
+## Transformation
+
+## Loading and Storage
+
+## Analysis
+
+
+
