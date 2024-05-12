@@ -18,6 +18,17 @@ This project fetches the latest data for 4 tech companies, and 4 pharmaceutical 
 
 
 ## Ingestion
+Data is being extracted from 3 APIs namely Alphavantage API, Polygon API, Tiingo API. Alphavantage API is being used to extract daily stock
+prices for financial companies ( limited to 4 for the project), Tiingo is used to extract daily stock prices for Healthcare companies and Polygon API is used to extract daily stock prices for Tech companies. Cloud Functions are used to perform the extraction. The extracted data is then stored in JSON format in Google Cloud Storage. The whole process is scheduled to run on daily basis using cloud scheduler
+
+<img width="1345" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/3aa51947-cdd1-4111-b907-17de179580ca">
+
+<img width="1439" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/3371787d-3fd4-4841-924e-448757bcc094">
+
+<img width="1467" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/f11f12c9-d4b1-4da8-bb81-8365a0bee4dc">
+
+
+
 
 ## Transformation
 
