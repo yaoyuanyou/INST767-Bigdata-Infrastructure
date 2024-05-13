@@ -45,7 +45,7 @@ The transformed data is then stored in BigQuery. The data is stored in three tab
 <img width="1012" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/853f38ba-8dfd-4ce5-b0ad-31742bceac07">
 
 ## Analysis
-For analysis, three business questions were formulated and the data was queried using SQL in BigQuery to get the desired data
+For analysis, a seperate analysis for each sector was conducted and then 4 sample business questions were formulated comparing all the sectors and the data was queried using SQL in BigQuery to get the desired data
 <img width="613" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/c8566b0a-b523-44a2-ad54-b5a71c81d2f1">
 
 <img width="733" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/3a9418a4-0cae-42cb-b3cc-c796a49ad441">
