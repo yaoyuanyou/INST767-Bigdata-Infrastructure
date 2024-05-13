@@ -32,20 +32,27 @@ prices for financial companies ( limited to 4 for the project), Tiingo is used t
 
 ## Transformation
 
-The data stored in Google Storage is then transformed into the right format using Dataproc and Spark jobs. After transformation, the final result is stored in Google BigQuery under table names: Tech, Finance, and Healthcare. The transformation process is scheduled to run daily using Google workflow, transforming the daily ingested data and appending the result into the big query
+The data stored in Google Storage is then transformed into the right format using Dataproc and Spark jobs. After transformation, the final result is stored in Google BigQuery. The transformation process is scheduled to run daily using Google workflow, transforming the daily ingested data and appending the result into the big query
 
 <img width="1175" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/a58f1bed-22c4-4f53-8fe1-06c0f3c89895">
 
 <img width="1216" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/d42cc248-a79b-4ce1-a515-8e2678fc9497">
 
+
+
+## Storage
+The transformed data is then stored in BigQuery. The data is stored in three tables: Tech, Finance, and Healthcare
 <img width="1012" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/853f38ba-8dfd-4ce5-b0ad-31742bceac07">
 
-
-
-
-## Loading and Storage
-
 ## Analysis
+For analysis, three business questions were formulated and the data was queried using SQL in BigQuery to get the desired data
+<img width="613" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/c8566b0a-b523-44a2-ad54-b5a71c81d2f1">
+
+<img width="733" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/3a9418a4-0cae-42cb-b3cc-c796a49ad441">
+
+
+
+
 
 
 
