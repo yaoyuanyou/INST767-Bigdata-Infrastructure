@@ -50,6 +50,24 @@ For analysis, a seperate analysis for each sector was conducted and then 4 sampl
 
 <img width="733" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/3a9418a4-0cae-42cb-b3cc-c796a49ad441">
 
+*Visualizations using Looker were also created for further analysis*
+
+<img width="540" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/5c98b4de-22b7-4c5a-af7f-048c2c76ba0f">
+
+<img width="482" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/c7426eb7-d442-42d7-aa44-179ec8a35f3c">
+
+<img width="652" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/d7d81f22-a069-4009-a0ef-a0b401df5721">
+
+<img width="590" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/a91da3b7-0e7c-4631-a921-f241fea0df2c">
+
+
+
+
+
+
+
+
+
 
 
 
