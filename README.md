@@ -19,16 +19,18 @@ This project fetches the latest data for 4 tech companies, and 4 pharmaceutical 
 
 ## Ingestion
 Data is being extracted from 3 APIs namely Alphavantage API, Polygon API, Tiingo API. Alphavantage API is being used to extract daily stock
-prices for financial companies ( limited to 4 for the project), Tiingo is used to extract daily stock prices for Healthcare companies and Polygon API is used to extract daily stock prices for Tech companies. Cloud Functions are used to perform the extraction. The extracted data is then stored in JSON format in Google Cloud Storage. The whole process is scheduled to run on daily basis using cloud scheduler
+prices for financial companies ( limited to 4 for the project), Tiingo is used to extract daily stock prices for Healthcare companies, and Polygon API is used to extract daily stock prices for Tech companies. Cloud Functions are used to perform the extraction. The extracted data is then stored in JSON format in Google Cloud Storage. The whole process is scheduled to run on a daily basis using a cloud scheduler
 
 <img width="1345" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/3aa51947-cdd1-4111-b907-17de179580ca">
 
 <img width="1439" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/3371787d-3fd4-4841-924e-448757bcc094">
 
+<img width="738" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/54ea6389-b298-4840-9776-c1246ee7fe27">
+
+<img width="1459" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/042153e5-5a4e-4b31-b26b-b16a204d5e1d">
+
+
 <img width="1467" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/f11f12c9-d4b1-4da8-bb81-8365a0bee4dc">
-
-
-
 
 ## Transformation
 
@@ -36,8 +38,7 @@ The data stored in Google Storage is then transformed into the right format usin
 
 <img width="1175" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/a58f1bed-22c4-4f53-8fe1-06c0f3c89895">
 
-<img width="1216" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/d42cc248-a79b-4ce1-a515-8e2678fc9497">
-
+<img width="1438" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/883a2aa4-b7c5-470c-a3a2-1e5f75a291bd">
 
 
 ## Storage
