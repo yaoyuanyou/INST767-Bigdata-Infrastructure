@@ -30,7 +30,7 @@ prices for financial companies ( limited to 4 for the project), Tiingo is used t
 <img width="1459" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/042153e5-5a4e-4b31-b26b-b16a204d5e1d">
 
 
-<img width="1467" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/f11f12c9-d4b1-4da8-bb81-8365a0bee4dc">
+<img width="1455" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/44709746-1498-4ce3-b3a6-cae1f323ea71">
 
 ## Transformation
 
