@@ -15,15 +15,15 @@ LIMIT 1);
 
 # Ques.2 How do the maximum daily price fluctuations (high - low) compare across sectors?
 
-SELECT Sector, round(MAX(Price_Fluctuation),2) AS Max_Fluctuation
+SELECT Sector, Date, round(MAX(Price_Fluctuation),2) AS Max_Fluctuation
 FROM (
-  SELECT 'Tech' AS Sector, High - Low AS Price_Fluctuation FROM stockdata.Tech
+  SELECT 'Tech' AS Sector, Date, High - Low AS Price_Fluctuation FROM stockdata.Tech
   UNION ALL
-  SELECT 'Finance', High - Low FROM stockdata.finance
+  SELECT 'Finance', Date, High - Low FROM stockdata.finance
   UNION ALL
-  SELECT 'Healthcare', High - Low FROM stockdata.healthcare
+  SELECT 'Healthcare', Date, High - Low FROM stockdata.healthcare
 )
-GROUP BY Sector;
+GROUP BY Sector, Date;
 
 
 # Ques.3 What are the top stock from each sector based on the past 30 days ?
