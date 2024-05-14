@@ -40,6 +40,10 @@ The data stored in Google Storage is then transformed into the right format usin
 
 <img width="1438" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/883a2aa4-b7c5-470c-a3a2-1e5f75a291bd">
 
+<img width="1454" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/a3eb9c83-ad84-4ba8-ac5b-d05704383cd3">
+
+<img width="1406" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/5f6a6c27-67be-48dc-b891-2d9dd7552cb3">
+
 
 ## Storage
 The transformed data is then stored in BigQuery. The data is stored in three tables: Tech, Finance, and Healthcare
