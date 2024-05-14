@@ -29,9 +29,8 @@ GROUP BY ticker
 ORDER BY Average_Daily_Volatility DESC;
 
 
-# Can you provide a monthly performance report for each stock listed in our database, detailing the opening price at the start of each month, 
+# What us monthly performance report for each stock listed in our database, detailing the opening price at the start of each month, 
 # the closing price at the end of the month, and the net change over the period?
-# lets try a hard query Finance Stok     CTE for life
 
 WITH MonthlyData AS (
   SELECT 
@@ -55,9 +54,8 @@ ORDER BY ticker, Month;
 
 
 
-# write an SQL query that determines the highest closing price reached by each of the major BAC,JPM, WFC, HSBC?
-# The query should filter for these specific tickers, calculate the maximum closing price for each, group the results by ticker, 
-# and order them to easily identify which stock had the highest closing price
+# What is the highest closing price reached by each of the major BAC,JPM, WFC, HSBC?
+
 SELECT 
     ticker,
     MAX(Close) AS Highest_Closing_Price
