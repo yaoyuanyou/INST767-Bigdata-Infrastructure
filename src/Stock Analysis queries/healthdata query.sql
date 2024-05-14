@@ -1,6 +1,6 @@
 
 
-#What is the daily price range for each healthcare stock, and how does it provide insights into the daily volatility of these stocks?
+# Ques What is the daily price range for each healthcare stock, and how does it provide insights into the daily volatility of these stocks?
 
 SELECT Date, ticker, High - Low AS Daily_Fluctuation
 FROM  stockdata.healthcare
@@ -8,8 +8,7 @@ WHERE ticker IN ('LLY', 'MRK', 'ABT', 'ABBV')
 ORDER BY Date;
 
 
-# What is the average trading volume per month for each stock within the Tech, Finance, and Healthcare sectors, 
-# and how does this reflect the overall trading activity for these stocks over time?
+# Ques. What is the average trading volume per month for each stock within the Tech, Finance, and Healthcare sectors,  and how does this reflect the overall trading activity for these stocks over time?
 
 SELECT 
     ticker,
@@ -22,7 +21,7 @@ GROUP BY ticker, Year, Month
 ORDER BY ticker, Year, Month;
 
 
-# What is the highest closing price ever recorded for each of the healthcare companies like LLY, MRK, ABT, and ABBV within our dataset?
+# Ques. What is the highest closing price ever recorded for each of the healthcare companies like LLY, MRK, ABT, and ABBV within our dataset?
 
 SELECT ticker, MAX(Close) AS Highest_Closing_Price
 FROM stockdata.healthcare
@@ -32,14 +31,14 @@ ORDER BY Highest_Closing_Price DESC;
 
 
 
-# How have the closing prices of key stocks in the Tech, Finance, and Healthcare sectors trended over the past year?
+# Ques. How have the closing prices of key stocks in the Tech, Finance, and Healthcare sectors trended over the past year?
 SELECT Date, ticker, Close
 FROM stockdata.healthcare
 WHERE ticker IN ('LLY', 'MRK', 'ABT', 'ABBV')
 ORDER BY Date, ticker;
 
 
-#How did the performance of key healthcare stocks such as LLY, MRK, ABT, and ABBV differ on specific days marked by significant market 
+# Ques. How did the performance of key healthcare stocks such as LLY, MRK, ABT, and ABBV differ on specific days marked by significant market 
 # movements or external events impacting the healthcare sector?
 SELECT Date, ticker, Open, Close, (Close - Open) / Open * 100 AS Percent_Change
 FROM stockdata.healthcare
