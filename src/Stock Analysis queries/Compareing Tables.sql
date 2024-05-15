@@ -1,29 +1,74 @@
 
-# Ques.1 Which sector had the highest average trading volume last month?
+# Ques.1 which stock in each sector has the higest and lowest trading volume last month?
 
-select sector, Avg_Volume as Max_avg_stock_value from (
-SELECT 'Tech' AS Sector, round(AVG(Volume),2) AS Avg_Volume FROM stockdata.Tech
+with max_vol as(
+
+(select 'Tech' as sector, ticker, max(volume) as max_volume from `stockdata.Tech`
+where extract(month from date)=extract(month from current_date())-1
+group by ticker
+order by max(volume) desc
+limit 1)
+
 UNION ALL
-SELECT 'Finance', round(AVG(Volume),2) FROM stockdata.finance
+
+(select 'Finance' as sector, ticker, max(volume) as max_volume from `stockdata.finance`
+where extract(month from date)=extract(month from current_date())-1
+group by ticker
+order by max(volume) desc
+limit 1)
+
+ UNION ALL
+
+(select 'Healtcare' as sector, ticker, max(volume) as max_volume from `stockdata.healthcare`
+where extract(month from date)=extract(month from current_date())-1
+group by ticker
+order by max(volume) desc
+limit 1)), 
+
+min_vol as (
+
+(select 'Tech' as sector, ticker, min(volume) as min_volume from `stockdata.Tech`
+where extract(month from date)=extract(month from current_date())-1
+group by ticker
+order by min(volume) 
+limit 1)
+
 UNION ALL
-SELECT 'Healthcare', round(AVG(Volume),2) FROM stockdata.healthcare
-WHERE EXTRACT(MONTH FROM Date) = EXTRACT(MONTH FROM CURRENT_DATE()) - 1
-ORDER BY Avg_Volume DESC
-LIMIT 1);
 
+(select 'Finance' as sector, ticker, min(volume) as min_volume from `stockdata.finance`
+where extract(month from date)=extract(month from current_date())-1
+group by ticker
+order by min(volume) 
+limit 1)
 
+ UNION ALL
 
-# Ques.2 How do the maximum daily price fluctuations (high - low) compare across sectors?
-
-SELECT Sector, Date, round(MAX(Price_Fluctuation),2) AS Max_Fluctuation
-FROM (
-  SELECT 'Tech' AS Sector, Date, High - Low AS Price_Fluctuation FROM stockdata.Tech
-  UNION ALL
-  SELECT 'Finance', Date, High - Low FROM stockdata.finance
-  UNION ALL
-  SELECT 'Healthcare', Date, High - Low FROM stockdata.healthcare
+(select 'Healtcare' as sector, ticker, min(volume) as min_volume from `stockdata.healthcare`
+where extract(month from date)=extract(month from current_date())-1
+group by ticker
+order by min(volume) 
+limit 1)
 )
-GROUP BY Sector, Date;
+
+select a.sector, a.ticker, a.max_volume, b.ticker, b.min_volume from max_vol a join min_vol b
+on a.sector=b.sector;
+
+
+
+# Ques.2 what is  max price fluctuations (high - low) among given stocks in each sector daily basis?
+
+with tech as(
+  select 'Tech' as sector,date, max(round((high-low),2)) as tech_daily_fluctuation from `stockdata.Tech`
+  group by date
+), finance as (
+   select 'Finance' as sector,date, max(round((high-low),2)) as fin_daily_fluctuation from `stockdata.finance`
+  group by date
+), Healthcare as (
+   select 'Healthcare' as sector,date, max(round((high-low),2)) as health_daily_fluctuation from `stockdata.healthcare`
+  group by date)
+
+  select a.date, a.tech_daily_fluctuation, b.fin_daily_fluctuation, c.health_daily_fluctuation from 
+  tech a join finance b on a.date=b.date join healthcare c on b.date=c.date;
 
 
 # Ques.3 What are the top stock from each sector based on the past 30 days ?
@@ -54,9 +99,7 @@ order by price desc limit 1);
 # using previous query as reference for this question to get top stocks
 
 
-
-WITH TopStocks AS (
-  
+with topstocks as(
 (SELECT 'Tech' AS Sector, a.ticker, round(max(a.average),2) as price FROM  stockdata.Tech a
 where a.Date<=current_date() and a.Date>=(current_date()-30)
 group by a.ticker
@@ -74,28 +117,15 @@ UNION ALL
 (SELECT 'Healthcare' AS Sector, a.ticker, round(max(a.average),2) as price FROM  stockdata.healthcare a
 where a.Date<=current_date() and a.Date>=(current_date()-30)
 group by a.ticker
-order by price desc limit 1)
+order by price desc limit 1)), 
+stocks as(
+  select 'Tech' as sector, * from `stockdata.Tech`
+  union all
+  select 'Finance' as sector, * from `stockdata.finance`
+  union all
+  select 'Healthcare' as sector, * from `stockdata.healthcare`
 )
 
-(SELECT s.Sector, t.Date, round(t.Close,2) as close
-FROM TopStocks s
-JOIN stockdata.Tech t ON t.ticker = s.ticker 
-where t.Date<=current_date() and t.Date>=(current_date()-30)
-order by t.Date)
-
-UNION ALL
-
-(SELECT s.Sector, f.Date, round(f.Close,2) as close
-FROM TopStocks s
-JOIN stockdata.finance f ON f.ticker = s.ticker
-where f.Date<=current_date() and f.Date>=(current_date()-30)
-order by f.Date)
-
-UNION ALL
-
-(SELECT s.Sector, h.Date, round(h.Close,2) as close
-FROM TopStocks s
-JOIN stockdata.healthcare h ON h.ticker = s.ticker 
-where h.Date<=current_date() and h.Date>=(current_date()-30)
-order by h.date);
+select b.sector,b.ticker, round(a.close,2) as closing_value, a.date from stocks a join TopStocks b on
+a.ticker=b.ticker and a.sector=b.sector
 
