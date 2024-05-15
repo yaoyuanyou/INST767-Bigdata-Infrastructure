@@ -55,9 +55,6 @@ The transformed data is then stored in BigQuery. The data is stored in three tab
 ## Analysis
 For analysis, a seperate analysis for each sector was conducted and then 4 sample business questions were formulated comparing all the sectors and the data was queried using SQL in BigQuery to get the desired data
 
-Question 1 Which stock in each section has the highest and lowest trading volume last months?
-Question 2 What are the top stock from each sector based on the past 30 days?
-
 
 <img width="796" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/aec4ab7e-4d4d-4ca5-b906-ab33789ac737">
 
