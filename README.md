@@ -53,12 +53,25 @@ The transformed data is then stored in BigQuery. The data is stored in three tab
 <img width="1012" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/853f38ba-8dfd-4ce5-b0ad-31742bceac07">
 
 ## Analysis
-For analysis, a seperate analysis for each sector was conducted and then 4 sample business questions were formulated comparing all the sectors and the data was queried using SQL in BigQuery to get the desired data
+For analysis, a seperate analysis for each sector was conducted and then 4 sample business questions were formulated comparing all the sectors and the data was queried using SQL in BigQuery to get the desired data.
 
+Questions:
+Ques.1 Which stock in each sector had the highest and lowest trading volume last month?
 
-<img width="796" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/aec4ab7e-4d4d-4ca5-b906-ab33789ac737">
+<img width="867" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/b8b3ae20-95d2-4a9c-89b4-4a37493b5752">
 
-<img width="807" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/a6a225f6-b76a-4b75-a04c-75a4eefc5375">
+Ques.2 what are  max price fluctuations (high - low) among given stocks in each sector daily basis?
+
+<img width="861" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/44c2692a-cfa3-477f-b673-00f9753dc547">
+
+Ques.3 What are the top stock from each sector based on the past 30 days ?
+
+<img width="749" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/bdfcbc4d-d1b2-4fbe-8978-c2c1656fc611">
+
+Ques.4 What are the trends in closing prices for the top stock from each sector over past 30 days?
+
+<img width="846" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/5595ae92-7bb4-41e5-bc7b-e9e0ed1f6d26">
+
 
 *Visualizations using Looker were also created for further analysis*
 
