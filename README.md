@@ -1,6 +1,9 @@
 # GCP DATA PIPELINE
 This project fetches the latest data for 4 tech companies, and 4 pharmaceutical and 4 Financial companies using Yahoo Polygon API, Tiingo API, and Alpha Vantage API in batch format storing the raw data to Google storage. Google Schedular which is scheduled to run daily at 1 am from Tuesday to Saturday ( since the market is closed on the weekend), updates the data in cloud storage. ETL transformations are performed using the DataProc PySpark cluster and the processed data is then loaded into BigQuery. Google workflow was used to automate the Transformation and loading part, scheduled to run daily at 3 am to process the new data stored in storage and appending it to BigQuery. Finally, sample queries were written in Bigquery to answer some proposed business questions related to the loaded stock data
 
+
+Team memeber: Surbhi Garg(sgarg31@umd.edu), Nuwan Chamara Hewabethmage(nhewabet@umd.edu), Hengmeng Wang(hwang17@umd.edu), Yogesh Jitendra Boricha(yogi@umd.edu), Yuanyou Yao(yyao93@umd.edu), Abdulrahman Mohamed Abdullahi(aabdul24@umd.edu)
+
 # Techonologies Used
 * Google Cloud Platform
 * Alpha Vantage API
@@ -52,11 +55,16 @@ The transformed data is then stored in BigQuery. The data is stored in three tab
 ## Analysis
 For analysis, a seperate analysis for each sector was conducted and then 4 sample business questions were formulated comparing all the sectors and the data was queried using SQL in BigQuery to get the desired data
 
+Question 1 Which stock in each section has the highest and lowest trading volume last months?
+Question 2 What are the top stock from each sector based on the past 30 days?
+
+
 <img width="796" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/aec4ab7e-4d4d-4ca5-b906-ab33789ac737">
 
 <img width="807" alt="image" src="https://github.com/garg1998/INST-767-Bigdata-project/assets/48328700/a6a225f6-b76a-4b75-a04c-75a4eefc5375">
 
 *Visualizations using Looker were also created for further analysis*
+
 
 <img width="540" alt="image" src="https://github.com/garg1998/INST-767/assets/48328700/5c98b4de-22b7-4c5a-af7f-048c2c76ba0f">
 
